@@ -1,0 +1,17 @@
+//code used for bookmarklet, used https://chriszarate.github.io/bookmarkleter/ to take care of exact formatting beyond this
+//
+javascript: (function() {
+    for (x = 1; x <= 100; x++) {
+        setTimeout(function(name) {
+            document.querySelector("input.new-todo").value = name
+            document.querySelector("input.new-todo").dispatchEvent(new Event('change',{
+                'bubbles': true
+            }))
+        }, x * 100, "todo " + x)
+    }
+
+}
+)()
+
+// line created from conversion site
+//javascript:void%20function(){javascript:(function(){for(x=1;100%3E=x;x++)setTimeout(function(a){document.querySelector(%22input.new-todo%22).value=a,document.querySelector(%22input.new-todo%22).dispatchEvent(new%20Event(%22change%22,{bubbles:!0}))},100*x,%22todo%20%22+x)})()}();
