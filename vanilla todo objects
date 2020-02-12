@@ -1,0 +1,98 @@
+var autoTodo = new function() {
+
+    this.clickItem = function(item) {
+        item.click()
+    }
+
+    this.toggleAll = new function() {
+        document.querySelector('#toggle-all').click()
+    }
+
+    this.selectItem = new function(x) {
+        document.querySelector("ul.todo-list > li:nth-child(" + x + ") input.toggle").click()
+    }
+
+    this.toggleAllIndividually = new function() {
+        var toggles = document.querySelectorAll('.toggle')
+        for (var x = 0; x < toggles.length; x++) {
+            toggles[x].click();
+        }
+    }
+
+    this.deleteItem = new function(x) {
+        document.querySelector("ul.todo-list > li:nth-child(" + x + ") button.destroy").click()
+    }
+
+    this.filterAll = new function() {
+        document.querySelector("ul.filters > li:nth-child(1) > a").click()
+    }
+
+    this.filterActive = new function() {
+        document.querySelector("ul.filters > li:nth-child(2) > a").click()
+    }
+
+    this.filterCompleted = new function() {
+        document.querySelector("ul.filters > li:nth-child(3) > a").click()
+    }
+
+    this.clearCompleted = new function() {
+        document.querySelector('.clear-completed').click()
+    }
+
+    this.createNewTodo = new function(value) {
+        document.querySelector("input.new-todo").value = value
+        document.querySelector("input.new-todo").dispatchEvent(new Event('change',{
+            'bubbles': true
+        }))
+    }
+
+    this.ammendTodo = new function(x, value) {
+        document.querySelector("ul.todo-list > li:nth-child(" + x + ") > div > label").dispatchEvent(new Event('dblclick',{
+            'bubbles': true
+        }))
+        document.querySelector("ul.todo-list > li:nth-child(" + x + ") .edit ").value = value
+        document.querySelector("ul.todo-list > li:nth-child(" + x + ") .edit ").dispatchEvent(new Event('blur'))
+    }
+
+    //functions I wrote
+    this.toggleEvenTodos = new function() {
+        var toggles = document.querySelectorAll('.toggle')
+        for (var x = 0; x < toggles.length; x++) {
+            if (x % 2 == 1) {
+                toggles[x].click();
+            }
+        }
+    }
+
+    this.toggleOddTodos = new function() {
+        var toggles = document.querySelectorAll('.toggle')
+        for (var x = 0; x < toggles.length; x++) {
+            if (x % 2 == 0) {
+                toggles[x].click();
+            }
+        }
+    }
+
+    this.toggleSelectedTodos = new function() {
+        var toggles = document.querySelectorAll('.toggle')
+        for (var x = 0; x < toggles.length; x++) {
+            var listitem = x + 1
+            if (document.querySelector("ul.todo-list > li:nth-child(" + listitem + ").completed")) {
+                toggles[x].click()
+            }
+
+        }
+    }
+
+    this.toggleUnselectedTodos = new function() {
+        var toggles = document.querySelectorAll('.toggle')
+        for (var x = 0; x < toggles.length; x++) {
+            var listitem = x + 1
+            if (!document.querySelector("ul.todo-list > li:nth-child(" + listitem + ").completed")) {
+                toggles[x].click()
+            }
+
+        }
+    }
+
+}

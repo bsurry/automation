@@ -1,0 +1,5 @@
+for (var x = 1; x<=20; x++){
+    var newtodo = "Fancy new todo " + x;
+    document.querySelector("input.new-todo").value=newtodo
+    document.querySelector("input.new-todo").dispatchEvent(new Event('change',{'bubbles':true}))
+}

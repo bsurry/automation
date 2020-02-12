@@ -1,0 +1,14 @@
+//self-contained code for use with bookmarklets
+var createTodosCount = 1;
+
+var createTodosBot = setInterval( function() {
+        document.querySelector("input.new-todo").value = "todo " + createTodosCount
+        document.querySelector("input.new-todo").dispatchEvent(new Event('change',{
+            'bubbles': true
+        }))
+        createTodosCount++
+        if (createTodosCount> 100){
+            clearInterval(createTodosBot)
+        }
+    }
+    ,250)

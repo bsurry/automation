@@ -1,0 +1,95 @@
+//functions created in the video
+function clickItem(item) {
+    item.click()
+}
+
+function toggleAll() {
+    document.querySelector('#toggle-all').click()
+}
+
+function selectItem(x) {
+    document.querySelector("ul.todo-list > li:nth-child(" + x + ") input.toggle").click()
+}
+
+function toggleAllIndividually() {
+    var toggles = document.querySelectorAll('.toggle')
+    for (var x = 0; x < toggles.length; x++) {
+        toggles[x].click();
+    }
+}
+
+function deleteItem(x) {
+    document.querySelector("ul.todo-list > li:nth-child(" + x + ") button.destroy").click()
+}
+
+function filterAll() {
+    document.querySelector("ul.filters > li:nth-child(1) > a").click()
+}
+
+function filterActive() {
+    document.querySelector("ul.filters > li:nth-child(2) > a").click()
+}
+
+function filterCompleted() {
+    document.querySelector("ul.filters > li:nth-child(3) > a").click()
+}
+
+function clearCompleted() {
+    document.querySelector('.clear-completed').click()
+}
+
+function createNewTodo(value) {
+    document.querySelector("input.new-todo").value = value
+    document.querySelector("input.new-todo").dispatchEvent(new Event('change',{
+        'bubbles': true
+    }))
+}
+
+function ammendTodo(x, value) {
+    document.querySelector("ul.todo-list > li:nth-child(" + x + ") > div > label").dispatchEvent(new Event('dblclick',{
+        'bubbles': true
+    }))
+    document.querySelector("ul.todo-list > li:nth-child(" + x + ") .edit ").value = value
+    document.querySelector("ul.todo-list > li:nth-child(" + x + ") .edit ").dispatchEvent(new Event('blur'))
+}
+
+//functions I wrote
+function toggleEvenTodos() {
+    var toggles = document.querySelectorAll('.toggle')
+    for (var x = 0; x < toggles.length; x++) {
+        if (x % 2 == 1) {
+            toggles[x].click();
+        }
+    }
+}
+
+function toggleOddTodos() {
+    var toggles = document.querySelectorAll('.toggle')
+    for (var x = 0; x < toggles.length; x++) {
+        if (x % 2 == 0) {
+            toggles[x].click();
+        }
+    }
+}
+
+function toggleSelectedTodos() {
+    var toggles = document.querySelectorAll('.toggle')
+    for (var x = 0; x < toggles.length; x++) {
+        var listitem = x + 1
+        if (document.querySelector("ul.todo-list > li:nth-child(" + listitem + ").completed")) {
+            toggles[x].click()
+        }
+
+    }
+}
+
+function toggleUnselectedTodos() {
+    var toggles = document.querySelectorAll('.toggle')
+    for (var x = 0; x < toggles.length; x++) {
+        var listitem = x + 1
+        if (!document.querySelector("ul.todo-list > li:nth-child(" + listitem + ").completed")) {
+            toggles[x].click()
+        }
+
+    }
+}
